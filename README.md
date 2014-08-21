@@ -4,7 +4,8 @@ Vanilla.js replacement of jstree
 Example: http://jsbin.com/puquviroxaki/1/edit
 ## Usage
 ```js
-var tree = new VanillaTree(treeElement, options); // treeElement is selector or HTML node, options is optional
+// treeElement is selector or HTML node, options is optional
+var tree = new VanillaTree(treeElement, options);
 ```
 ## Options
 ``placeholder`` (string) -- shows if none of leafs is added (optional)
