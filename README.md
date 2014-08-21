@@ -1,6 +1,6 @@
 vanillatree
 ===========
-Vanilla.js replacement of jstree
+Vanilla.js replacement of [jstree](http://www.jstree.com/) for modern browsers
 
 [Example](http://jsbin.com/puquviroxaki/2/edit)
 ## Usage
