@@ -2,7 +2,7 @@ vanillatree
 ===========
 Vanilla.js replacement of jstree
 
-[Example](http://jsbin.com/puquviroxaki/1/edit)
+[Example](http://jsbin.com/puquviroxaki/2/edit)
 ## Usage
 ```js
 // treeElement is selector or HTML node, options is optional
