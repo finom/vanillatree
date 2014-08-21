@@ -1,7 +1,7 @@
 vanillatree
 ===========
 Vanilla.js replacement of jstree
-Example: http://jsbin.com/puquviroxaki/1/edit
+[Example](http://jsbin.com/puquviroxaki/1/edit)
 ## Usage
 ```js
 // treeElement is selector or HTML node, options is optional
@@ -58,7 +58,7 @@ tree.open('a');
 ```
 
 ## Events
-VanillaTree uses [dispatchEvent](https://developer.mozilla.org/ru/docs/DOM/element.dispatchEvent) for events triggering.
+VanillaTree uses [dispatchEvent](https://developer.mozilla.org/ru/docs/DOM/element.dispatchEvent) for events triggering. Each event cancelable and bubbles up through the DOM. Id of target elements contained in ``evt.detail`` object.
 
 - ``vtree-add``
 - ``vtree-move``
