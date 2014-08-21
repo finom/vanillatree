@@ -27,7 +27,6 @@
 						menu.parentNode.removeChild( menu );
 					});
 					if( $( evt.target ).is( '.vtree-leaf-label' ) ) {
-						console.log( evt );
 						evt.preventDefault();
 						evt.stopPropagation();
 						menu = create( 'menu', {
