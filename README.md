@@ -10,6 +10,8 @@ var tree = new VanillaTree(treeElement, options);
 ## Options
 - ``placeholder`` (string) -- shows if none of leafs is added (optional)
 - ``contextmenu`` (array) -- contextual menu items (optional)
+
+### Examples
 ```js
 var tree = new VanillaTree('.my-selector', {
   placeholder: 'None of leafs is added yet',
@@ -37,11 +39,13 @@ var tree = new VanillaTree('.my-selector', {
 - ``toggle(id)`` -- Expands or closes child tree dependss on current state
 - ``select(id) ``-- Selects leaf with given id
 
+### Examples
 ```js
 tree.add({
   label: 'Label A',
   id: 'a',
-  opened: true
+  opened: true,
+  selected: true
 });
 
 tree.add({
@@ -54,13 +58,16 @@ tree.open('a');
 ```
 
 ## Events
-- vtree-add
-- vtree-move
-- vtree-remove
-- vtree-open
-- vtree-close
-- vtree-select
+VanillaTree uses [dispatchEvent](https://developer.mozilla.org/ru/docs/DOM/element.dispatchEvent) for events triggering.
 
+- ``vtree-add``
+- ``vtree-move``
+- ``vtree-remove``
+- ``vtree-open``
+- ``vtree-close``
+- ``vtree-select``
+
+### Examples
 ```js
 treeElement.addEventListener('vtree-open', function(evt) {
   info.innerHTML = evt.detail.id + ' is opened';
