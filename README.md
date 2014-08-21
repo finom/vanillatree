@@ -83,3 +83,5 @@ treeElement.addEventListener('vtree-select', function(evt) {
   info.innerHTML = evt.detail.id + ' is selected';
 });
 ```
+
+**Licensed under WTFPL**
