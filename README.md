@@ -61,6 +61,7 @@ tree.open('a');
 ## Events
 VanillaTree uses [dispatchEvent](https://developer.mozilla.org/ru/docs/DOM/element.dispatchEvent) for events triggering. Each event cancelable and bubbles up through the DOM. An id of target element contained in ``evt.detail`` object.
 
+List of possible events:
 - ``vtree-add``
 - ``vtree-move``
 - ``vtree-remove``
