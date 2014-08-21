@@ -40,7 +40,7 @@
 							display: 'block'
 						});
 						
-						options.contextmenu.items.forEach( function( item ) {
+						options.contextmenu.forEach( function( item ) {
 							menu.appendChild( create( 'li', {
 								className: 'vtree-contextmenu-item',
 								innerHTML: item.label
