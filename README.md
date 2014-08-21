@@ -32,7 +32,7 @@ var tree = new VanillaTree('.my-selector', {
 
 
 ## Methods
-- ``add(options)`` -- Adds leaf. id option is optional
+- ``add(options)`` -- Adds leaf. ``id`` option is optional
 - ``move(id, parentId)`` -- Moves leaf to another parent
 - ``remove(id)`` -- Removes leaf with given id
 - ``open(id)`` -- Expands child tree
