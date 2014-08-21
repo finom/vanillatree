@@ -8,8 +8,8 @@ Example: http://jsbin.com/puquviroxaki/1/edit
 var tree = new VanillaTree(treeElement, options);
 ```
 ## Options
-``placeholder`` (string) -- shows if none of leafs is added (optional)
-``contextmenu`` (array) -- contextual menu items (optional)
+- ``placeholder`` (string) -- shows if none of leafs is added (optional)
+- ``contextmenu`` (array) -- contextual menu items (optional)
 ```js
 var tree = new VanillaTree('.my-selector', {
   placeholder: 'None of leafs is added yet',
