@@ -1,6 +1,7 @@
 vanillatree
 ===========
 Vanilla.js replacement of jstree
+
 [Example](http://jsbin.com/puquviroxaki/1/edit)
 ## Usage
 ```js
