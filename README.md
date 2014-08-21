@@ -54,7 +54,7 @@ tree.add({
   id: 'b',
   parent: 'a'
 });
-_dispatch
+
 tree.open('a');
 ```
 
