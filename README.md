@@ -85,3 +85,5 @@ treeElement.addEventListener('vtree-select', function(evt) {
 ```
 
 **Licensed under WTFPL**
+
+Image sprite licensed under **MIT License** because this is part of [JSTree project](http://www.jstree.com/)
