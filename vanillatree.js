@@ -95,7 +95,7 @@
 		getChildList: function( id ) {
 			var list;
 			if( id ) {
-				parent = this.getLeaf( id );
+				parent = this.getLeaf( id );console.log( parent );
 				if( !( list = $( 'ul', parent )[ 0 ] ) ) {
 					list = parent.appendChild( create( 'ul', {
 						className: 'vtree-subtree'
