@@ -62,7 +62,7 @@
 		constructor: Tree,
 		_dispatch: function( name, id ) {
 			var event;
-			if( window.CustomEvent ) {
+			try {
 				event = new CustomEvent( 'vtree-' + name, {
 					bubbles: true,
 					cancelable: true,
@@ -70,7 +70,7 @@
 						id: id
 					}
 				});
-			} else {
+			} catch(e) {
 				event = document.createEvent( 'CustomEvent' );
 				event.initCustomEvent( 'vtree-' + name, true, true, { id: id });
 			}
