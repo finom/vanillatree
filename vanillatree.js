@@ -88,14 +88,14 @@
 			return this;
 		},
 		getLeaf: function( id, notThrow ) {
-			var leaf = $( '[data-vtree-id="' + id + '"]', this.tree )[ 0 ];
+			var leaf = $( '[data-vtree-id="' + id + '"]', this.tree )[ 0 ];console.log( leaf )
 			if( !notThrow && !leaf ) throw Error( 'No VanillaTree leaf with id "' + id + '"' )
 			return leaf;
 		},
 		getChildList: function( id ) {
 			var list;
 			if( id ) {
-				parent = this.getLeaf( id );console.log( parent );
+				parent = this.getLeaf( id );
 				if( !( list = $( 'ul', parent )[ 0 ] ) ) {
 					list = parent.appendChild( create( 'ul', {
 						className: 'vtree-subtree'
