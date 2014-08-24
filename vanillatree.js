@@ -1,4 +1,5 @@
 ( function( $ ) {
+	"use strict";
 	var create = function( tagName, props ) {
 			return $.extend( document.createElement( tagName ), props );
 		},
@@ -88,12 +89,13 @@
 			return this;
 		},
 		getLeaf: function( id, notThrow ) {
-			var leaf = $( '[data-vtree-id="' + id + '"]', this.tree )[ 0 ];console.log( leaf )
+			var leaf = $( '[data-vtree-id="' + id + '"]', this.tree )[ 0 ];
 			if( !notThrow && !leaf ) throw Error( 'No VanillaTree leaf with id "' + id + '"' )
 			return leaf;
 		},
 		getChildList: function( id ) {
-			var list;
+			var list,
+				parent;
 			if( id ) {
 				parent = this.getLeaf( id );
 				if( !( list = $( 'ul', parent )[ 0 ] ) ) {
