@@ -61,14 +61,21 @@
 	Tree.prototype = {
 		constructor: Tree,
 		_dispatch: function( name, id ) {
-			( this.getLeaf( id, true ) || this.tree )
-				.dispatchEvent( new CustomEvent( 'vtree-' + name, {
+			var event;
+			if( window.CustomEvent ) {
+				event = new CustomEvent( 'vtree-' + name, {
 					bubbles: true,
 					cancelable: true,
 					detail: {
 						id: id
 					}
-				}) );
+				});
+			} else {
+				event = document.createEvent( 'CustomEvent' );
+				event.initCustomEvent( 'vtree-' + name, true, true, { id: id });
+			}
+			( this.getLeaf( id, true ) || this.tree )
+				.dispatchEvent( event );
 			return this;
 		},
 		_placeholder: function() {
