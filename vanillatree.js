@@ -15,9 +15,9 @@
 			
 			tree.addEventListener( 'click', function( evt ) {
 				if( $( evt.target ).is( '.vtree-leaf-label' ) ) {
-					_this.select( evt.target.parentNode.dataset.vtreeId );
+					_this.select( evt.target.parentNode.getAttribute('data-vtree-id') );
 				} else if( $( evt.target ).is( '.vtree-toggle' ) ) {
-					_this.toggle( evt.target.parentNode.dataset.vtreeId );
+					_this.toggle( evt.target.parentNode.getAttribute('data-vtree-id') );
 				}
 			});
 			
@@ -44,7 +44,7 @@
 							menu.appendChild( create( 'li', {
 								className: 'vtree-contextmenu-item',
 								innerHTML: item.label
-							}) ).addEventListener( 'click', item.action.bind( item, evt.target.parentNode.dataset.vtreeId ) );
+							}) ).addEventListener( 'click', item.action.bind( item, evt.target.parentNode.getAttribute('data-vtree-id') ) );
 						});
 						
 						evt.target.parentNode.appendChild( menu );
