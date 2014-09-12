@@ -87,8 +87,18 @@ treeElement.addEventListener('vtree-select', function(evt) {
 });
 ```
 
-### Which browsers are supported?
+## Which browsers are supported?
 VanillaTree uses modern features such as: [classList](https://developer.mozilla.org/en-US/docs/Web/API/Element.classList), [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget.addEventListener) and [dispatchEvent](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget.dispatchEvent), which are supported by new (not newest) browsers including Internet Explorer 10+. If you want to get this script working in Internet Explorer 9, you should attach classList polyfill, which can be found on [MDN page](https://developer.mozilla.org/en-US/docs/Web/API/Element.classList#wrapper)
+
+## What is vanilla.js?
+> Who's using Vanilla JS? Glad you asked! Here are a few:
+> Facebook, Google, YouTube, Yahoo, Wikipedia, Windows, Live, Twitter, Amazon, LinkedIn, MSN, eBay, Microsoft, Tumblr, Apple, Pinterest, PayPal, Reddit, Netflix, Stack Overflow
+
+Actually, vanilla.js is funny name of pure DOM functions. It's more powerful then any Javascript library, including jQuery. Look at [vanilla.js](http://vanilla-js.com/) website for more information.
+
+## Can I use it with jQuery?
+Ofcource! Any vanilla.js
+
 
 **Licensed under WTFPL**
 
