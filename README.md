@@ -97,8 +97,15 @@ VanillaTree uses modern features such as: [classList](https://developer.mozilla.
 Actually, vanilla.js is funny name of pure DOM functions. It's more powerful then any Javascript library, including jQuery. Look at [vanilla.js](http://vanilla-js.com/) website for more information.
 
 ## Can I use it with jQuery?
-Ofcource! Any vanilla.js
-
+Ofcource! For example, you can use **jQuery.fn.on** syntax instead of **addEventListener** for adding event listeners:
+```js
+$( treeElement ).on( 'vtree-select', function(evt) {
+  alert( evt.detail.id );
+}).on( 'vtree-add', function(evt) {
+  alert( evt.detail.id );
+});
+// and so on...
+```
 
 **Licensed under WTFPL**
 
