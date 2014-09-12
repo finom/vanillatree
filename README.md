@@ -87,6 +87,9 @@ treeElement.addEventListener('vtree-select', function(evt) {
 });
 ```
 
+### Which browsers are supported?
+VanillaTree uses modern features such as: [classList](https://developer.mozilla.org/en-US/docs/Web/API/Element.classList), [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget.addEventListener) and [dispatchEvent](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget.dispatchEvent), which are supported by new (not newest) browsers including Internet Explorer 10+. If you want to get this script working in Internet Explorer 9, you should attach classList polyfill, which can be found on [MDN page](https://developer.mozilla.org/en-US/docs/Web/API/Element.classList#wrapper)
+
 **Licensed under WTFPL**
 
 Image sprite licensed under **MIT License** because this is part of [JSTree project](http://www.jstree.com/)
