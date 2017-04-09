@@ -3,7 +3,7 @@ vanillatree [![npm version](https://badge.fury.io/js/vanillatree.svg)](https://b
 
 Standalone tree view library
 
-[Live demo](http://jsbin.com/mesoju/1/)
+[Live demo](http://jsbin.com/nudosewafi/1/)
 
 ![Example Screenshot](http://i.imgur.com/TPlp1ga.png)
 
