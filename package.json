@@ -1,0 +1,24 @@
+{
+  "name": "vanillatree",
+  "version": "0.0.1",
+  "description": "Standalone tree view library",
+  "main": "vanillatree.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/finom/vanillatree.git"
+  },
+  "keywords": [
+    "treeview",
+    "jstree",
+    "vanilla"
+  ],
+  "author": "Andrey Gubanov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/finom/vanillatree/issues"
+  },
+  "homepage": "https://github.com/finom/vanillatree#readme"
+}

@@ -1,14 +1,17 @@
 (function (root, factory) {
     if (typeof define == 'function' && define.amd) {
         define( factory );
+    } else if (typeof module === 'object' && module.exports) {
+        module.exports = factory();
     } else {
         root.VanillaTree = factory();
     }
 }(this, function () {
 	"use strict";
-	// Look at the Balalaika https://github.com/finom/balalaika
-	var $=function(n,e,k,h,p,m,l,b,d,g,f,c){c=function(a,b){return new c.i(a,b)};c.i=function(a,d){k.push.apply(this,a?a.nodeType||a==n?[a]:""+a===a?/</.test(a)?((b=e.createElement(d||"q")).innerHTML=a,b.children):(d&&c(d)[0]||e).querySelectorAll(a):/f/.test(typeof a)?/c/.test(e.readyState)?a():c(e).on("DOMContentLoaded",a):a:k)};c.i[f="prototype"]=(c.extend=function(a){g=arguments;for(b=1;b<g.length;b++)if(f=g[b])for(d in f)a[d]=f[d];return a})(c.fn=c[f]=k,{on:function(a,d){a=a.split(h);this.map(function(c){(h[b=a[0]+(c.b$=c.b$||++p)]=h[b]||[]).push([d,a[1]]);c["add"+m](a[0],d)});return this},off:function(a,c){a=a.split(h);f="remove"+m;this.map(function(e){if(b=(g=h[a[0]+e.b$])&&g.length)for(;d=g[--b];)c&&c!=d[0]||a[1]&&a[1]!=d[1]||(e[f](a[0],d[0]),g.splice(b,1));else!a[1]&&e[f](a[0],c)});return this},is:function(a){d=(b=this[0])&&(b.matches||b["webkit"+l]||b["moz"+l]||b["ms"+l]);return!!d&&d.call(b,a)}});return c}(window,document,[],/\.(.+)/,0,"EventListener","MatchesSelector");
-	
+	// See  https://github.com/finom/bala
+	var $=function(e,n,t){function r(u,c,l){return l=Object.create(r.fn),u&&l.push.apply(l,u[n]?[u]:""+u===u?/</.test(u)?((c=e.createElement(c||n)).innerHTML=u,c.children):c?(c=r(c)[0])?c[t](u):l:e[t](u):u),l}return r.fn=[],r.one=function(e,n){return r(e,n)[0]||null},r}(document,"addEventListener","querySelectorAll");
+
+
 	var create = function( tagName, props ) {
 			return $.extend( document.createElement( tagName ), props );
 		},
@@ -18,7 +21,7 @@
 				tree = _this.tree = container.appendChild( create( 'ul', {
 					className: 'vtree'
 				}) );
-			
+
 			_this.placeholder = options && options.placeholder;
 			_this._placeholder();
 			_this.leafs = {};
@@ -29,7 +32,7 @@
 					_this.toggle( evt.target.parentNode.getAttribute('data-vtree-id') );
 				}
 			});
-			
+
 			if( options && options.contextmenu ) {
 				tree.addEventListener( 'contextmenu', function( evt ) {
 					var menu;
@@ -42,24 +45,24 @@
 						menu = create( 'menu', {
 							className: 'vtree-contextmenu'
 						});
-						
+
 						$.extend( menu.style, {
 							top: evt.offsetY,
 							left: evt.offsetX + 18,
 							display: 'block'
 						});
-						
+
 						options.contextmenu.forEach( function( item ) {
 							menu.appendChild( create( 'li', {
 								className: 'vtree-contextmenu-item',
 								innerHTML: item.label
 							}) ).addEventListener( 'click', item.action.bind( item, evt.target.parentNode.getAttribute('data-vtree-id') ) );
 						});
-						
+
 						evt.target.parentNode.appendChild( menu );
 					}
 				});
-				
+
 				document.addEventListener( 'click', function( evt ) {
 					$( '.vtree-contextmenu' ).forEach( function( menu ) {
 						menu.parentNode.removeChild( menu );
@@ -67,7 +70,7 @@
 				});
 			}
 		};
-	
+
 	Tree.prototype = {
 		constructor: Tree,
 		_dispatch: function( name, id ) {
@@ -124,48 +127,48 @@
 					className: 'vtree-leaf'
 				}),
 				parentList = this.getChildList( options.parent );
-			
+
 			leaf.setAttribute( 'data-vtree-id', id = options.id || Math.random() );
-			
+
 			leaf.appendChild( create( 'span', {
 				className: 'vtree-toggle'
 			}) );
-			
+
 			leaf.appendChild( create( 'a', {
 				className: 'vtree-leaf-label',
 				innerHTML: options.label
 			}) );
-						
+
 			parentList.appendChild( leaf );
-			
+
 			if( parentList !== this.tree ) {
 				parentList.parentNode.classList.add( 'vtree-has-children' );
 			}
-			
+
 			this.leafs[ id ] = options;
-			
+
 			if( !options.opened ) {
 				this.close( id );
 			}
-			
+
 			if( options.selected ) {
 				this.select( id );
 			}
-			
+
 			return this._placeholder()._dispatch( 'add', id );
 		},
 		move: function( id, parentId ) {
 			var leaf = this.getLeaf( id ),
 				oldParent = leaf.parentNode,
 				newParent = this.getLeaf( parentId, true );
-				
+
 			if( newParent ) {
 				newParent.classList.add( 'vtree-has-children' );
 			}
-			
+
 			this.getChildList( parentId ).appendChild( leaf );
 			oldParent.parentNode.classList.toggle( 'vtree-has-children', !!oldParent.children.length );
-			
+
 			return this._dispatch( 'move', id );
 		},
 		remove: function( id ) {
@@ -173,7 +176,7 @@
 				oldParent = leaf.parentNode;
 			oldParent.removeChild( leaf );
 			oldParent.parentNode.classList.toggle( 'vtree-has-children', !!oldParent.children.length );
-			
+
 			return this._placeholder()._dispatch( 'remove', id );
 		},
 		open: function( id ) {
@@ -189,20 +192,20 @@
 		},
 		select: function( id ) {
 			var leaf = this.getLeaf( id );
-			
+
 			if( !leaf.classList.contains( 'vtree-selected' ) ) {
 				$( 'li.vtree-leaf', this.tree ).forEach( function( leaf ) {
 					leaf.classList.remove( 'vtree-selected' );
 				});
-				
+
 				leaf.classList.add( 'vtree-selected' );
 				this._dispatch( 'select', id );
 			}
-			
+
 			return this;
 		}
 	};
-	
+
 	return Tree;
 	// Look at the Balalaika https://github.com/finom/balalaika
 }));
