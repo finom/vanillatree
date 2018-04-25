@@ -135,7 +135,7 @@
 
 			leaf.appendChild( create( 'a', {
 				className: 'vtree-leaf-label',
-				innerHTML: options.label
+				innerText: options.label
 			}) );
 
 			parentList.appendChild( leaf );
