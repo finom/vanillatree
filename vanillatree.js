@@ -45,11 +45,12 @@
 							className: 'vtree-contextmenu'
 						});
 
-						$.extend( menu.style, {
-							top: evt.offsetY,
-							left: evt.offsetX + 18,
-							display: 'block'
-						});
+            var rect = evt.target.getBoundingClientRect();
+            $.extend(menu.style, {
+                top: (evt.target.offsetTop + rect.height).toString() + "px",
+                left: evt.target.offsetLeft.toString() + "px",
+                display: 'block'
+            });
 
 						options.contextmenu.forEach( function( item ) {
 							menu.appendChild( create( 'li', {
@@ -63,6 +64,7 @@
 				});
 
 				document.addEventListener( 'click', function( evt ) {
+          if(evt.button === 2) return;
 					$( '.vtree-contextmenu' ).forEach( function( menu ) {
 						menu.parentNode.removeChild( menu );
 					});
