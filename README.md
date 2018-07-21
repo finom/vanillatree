@@ -1,4 +1,4 @@
-vanillatree [![npm version](https://badge.fury.io/js/vanillatree.svg)](https://badge.fury.io/js/vanillatree)
+vanillatree  [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/) [![npm version](https://badge.fury.io/js/vanillatree.svg)](https://badge.fury.io/js/vanillatree)
 ===========
 
 Standalone tree view library
