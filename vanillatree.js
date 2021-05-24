@@ -10,83 +10,73 @@
 	"use strict";
 	var create = function (tagName, props) {
 		return extend(document.createElement(tagName), props);
-	};
-	var extend = function (a, b) {
-		for (var key in b)
-			if (b.hasOwnProperty(key))
-				a[key] = b[key];
-		return a;
-	};
-	var matches = function (el, selector) {
-		return (el.matches || el.matchesSelector || el.msMatchesSelector || el.mozMatchesSelector || el.webkitMatchesSelector || el.oMatchesSelector).call(el, selector);
-	};
+	},
+		Tree = function (s, options) {
+			var _this = this,
+				container = _this.container = document.getElementsByTagName(s.tagName)[0],
+				tree = _this.tree = container.appendChild(create('ul', {
+					className: 'vtree'
+				}));
 
-	Tree = function (s, options) {
-		var _this = this,
-			container = _this.container = document.getElementsByTagName(s.tagName)[0],
-			tree = _this.tree = container.appendChild(create('ul', {
-				className: 'vtree'
-			}));
+			_this.placeholder = options && options.placeholder;
+			_this._placeholder();
+			_this.leafs = {};
+			tree.addEventListener('click', function (evt) {
+				if (matches(evt.target, '.vtree-leaf-label')) {
+					_this.select(evt.target.parentNode.getAttribute('data-vtree-id'));
+				} else if ((matches(evt.target, '.vtree-toggle'))) {
+					_this.toggle(evt.target.parentNode.getAttribute('data-vtree-id'));
+				}
+			});
 
-		_this.placeholder = options && options.placeholder;
-		_this._placeholder();
-		_this.leafs = {};
-		tree.addEventListener('click', function (evt) {
-			if (matches(evt.target, '.vtree-leaf-label')) {
-				_this.select(evt.target.parentNode.getAttribute('data-vtree-id'));
-			} else if ((matches(evt.target, '.vtree-toggle'))) {
-				_this.toggle(evt.target.parentNode.getAttribute('data-vtree-id'));
+			if (options && options.contextmenu) {
+				tree.addEventListener('contextmenu', function (evt) {
+					var menu;
+					var col = document.getElementsByClassName('.vtree-contextmenu');
+					if (col.length) {
+						col.forEach(function (menu) {
+							menu.parentNode.removeChild(menu);
+						});
+					}
+					if ((matches(evt.target, '.vtree-leaf-label'))) {
+						evt.preventDefault();
+						evt.stopPropagation();
+						menu = create('menu', {
+							className: 'vtree-contextmenu'
+						});
+
+						var rect = evt.target.getBoundingClientRect();
+						extend(menu.style, {
+							top: (evt.target.offsetTop + rect.height).toString() + "px",
+							left: evt.target.offsetLeft.toString() + "px",
+							display: 'block'
+						});
+
+						options.contextmenu.forEach(function (item) {
+							menu.appendChild(create('li', {
+								className: 'vtree-contextmenu-item',
+								innerHTML: item.label
+							})).addEventListener('click', item.action.bind(item, evt.target.parentNode.getAttribute('data-vtree-id')));
+						});
+
+						evt.target.parentNode.appendChild(menu);
+					}
+				});
+
+				document.addEventListener('click', function (evt) {
+					if (evt.button === 2) return;
+					var col = document.getElementsByClassName('.vtree-contextmenu');
+					if (col.length) {
+						col.forEach(function (menu) {
+							menu.parentNode.removeChild(menu);
+						});
+					}
+					// document.getElementsByClassName("vtree-contextmenu").forEach(function (menu) {
+					// 	menu.parentNode.removeChild(menu);
+					// });
+				});
 			}
-		});
-
-		if (options && options.contextmenu) {
-			tree.addEventListener('contextmenu', function (evt) {
-				var menu;
-				var col = document.getElementsByClassName('.vtree-contextmenu');
-				if (col.length) {
-					col.forEach(function (menu) {
-						menu.parentNode.removeChild(menu);
-					});
-				}
-				if ((matches(evt.target, '.vtree-leaf-label'))) {
-					evt.preventDefault();
-					evt.stopPropagation();
-					menu = create('menu', {
-						className: 'vtree-contextmenu'
-					});
-
-					var rect = evt.target.getBoundingClientRect();
-					extend(menu.style, {
-						top: (evt.target.offsetTop + rect.height).toString() + "px",
-						left: evt.target.offsetLeft.toString() + "px",
-						display: 'block'
-					});
-
-					options.contextmenu.forEach(function (item) {
-						menu.appendChild(create('li', {
-							className: 'vtree-contextmenu-item',
-							innerHTML: item.label
-						})).addEventListener('click', item.action.bind(item, evt.target.parentNode.getAttribute('data-vtree-id')));
-					});
-
-					evt.target.parentNode.appendChild(menu);
-				}
-			});
-
-			document.addEventListener('click', function (evt) {
-				if (evt.button === 2) return;
-				var col = document.getElementsByClassName('.vtree-contextmenu');
-				if (col.length) {
-					col.forEach(function (menu) {
-						menu.parentNode.removeChild(menu);
-					});
-				}
-				// document.getElementsByClassName("vtree-contextmenu").forEach(function (menu) {
-				// 	menu.parentNode.removeChild(menu);
-				// });
-			});
-		}
-	};
+		};
 
 	Tree.prototype = {
 		constructor: Tree,
@@ -224,3 +214,12 @@
 	};
 	return Tree;
 }));
+function extend(a, b) {
+	for (var key in b)
+		if (b.hasOwnProperty(key))
+			a[key] = b[key];
+	return a;
+}
+var matches = function (el, selector) {
+	return (el.matches || el.matchesSelector || el.msMatchesSelector || el.mozMatchesSelector || el.webkitMatchesSelector || el.oMatchesSelector).call(el, selector);
+};
