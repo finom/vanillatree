@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VanillaTree</title>
+    <meta name="description" content="A tree view with no dependencies: one small script, keyboard and screen reader support, IE 10 and up.">
+    <link rel="canonical" href="https://finom.github.io/vanillatree/">
+    <meta property="og:title" content="VanillaTree">
+    <meta property="og:description" content="A tree view with no dependencies: one small script, keyboard and screen reader support, IE 10 and up.">
+    <meta property="og:url" content="https://finom.github.io/vanillatree/">
+    <meta property="og:image" content="https://finom.github.io/vanillatree/screenshot.png">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 2v12M3 5h5M3 11h5' stroke='%230b6bcb' stroke-width='2' fill='none'/%3E%3Ccircle cx='11' cy='5' r='2.5' fill='%230b6bcb'/%3E%3Ccircle cx='11' cy='11' r='2.5' fill='%230b6bcb'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="vanillatree.css">
+    <link rel="stylesheet" href="demo.css">
+  </head>
+  <body>
+    <a class="skip" href="#tree-heading">Skip to the demo</a>
+    <header>
+      <div class="wrap header">
+        <h1>VanillaTree</h1>
+        <nav aria-label="Links">
+          <a href="https://github.com/finom/vanillatree">GitHub</a>
+          <a href="https://www.npmjs.com/package/vanillatree">npm</a>
+          <label class="theme">Theme
+            <select id="theme">
+              <option value="auto">Auto</option>
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+          </label>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <p class="lead">A tree view with no dependencies: one small script, keyboard and screen reader support, IE 10 and up.</p>
+
+      <section class="demo" aria-labelledby="tree-heading">
+        <div class="panel">
+          <h2 id="tree-heading">Project files</h2>
+          <p class="hint">Folders open and close on a click; files get selected. Right-click a name, or press the context menu key, for its menu.</p>
+          <div id="tree"></div>
+          <div class="buttons">
+            <button type="button" id="add">Add a file to the selection's folder</button>
+            <button type="button" id="remove">Remove the selection</button>
+            <button type="button" id="open-all">Open all</button>
+            <button type="button" id="close-all">Close all</button>
+          </div>
+        </div>
+        <div class="panel">
+          <h2 id="log-heading">Events</h2>
+          <ol id="log" aria-labelledby="log-heading" aria-live="polite"></ol>
+        </div>
+      </section>
+
+      <section aria-labelledby="keys-heading">
+        <h2 id="keys-heading">Keyboard</h2>
+        <dl class="keys">
+          <dt><kbd>Tab</kbd></dt><dd>Into the tree, to the selected leaf or the first one</dd>
+          <dt><kbd>↑</kbd> <kbd>↓</kbd></dt><dd>Previous and next visible leaf</dd>
+          <dt><kbd>→</kbd></dt><dd>Open a closed leaf; on an open one, go to its first child</dd>
+          <dt><kbd>←</kbd></dt><dd>Close an open leaf; otherwise go to its parent</dd>
+          <dt><kbd>Home</kbd> <kbd>End</kbd></dt><dd>First and last visible leaf</dd>
+          <dt><kbd>Enter</kbd> <kbd>Space</kbd></dt><dd>Select; open or close a leaf that can't be selected</dd>
+          <dt><kbd>Shift</kbd>+<kbd>F10</kbd>, context menu key</dt><dd>The menu; arrows, <kbd>Enter</kbd> and <kbd>Esc</kbd> inside it</dd>
+        </dl>
+      </section>
+
+      <section aria-labelledby="install-heading">
+        <h2 id="install-heading">Install</h2>
+        <pre><code>npm install vanillatree</code></pre>
+        <pre><code>import VanillaTree from 'vanillatree';
+import 'vanillatree/vanillatree.css';
+
+const tree = new VanillaTree('#tree', { placeholder: 'Nothing here yet' });
+tree.add({ label: 'src', id: 'src', opened: true, selectable: false });
+tree.add({ label: 'index.ts', parent: 'src', selected: true });</code></pre>
+        <p>Or with a script tag: <code>&lt;script src="https://cdn.jsdelivr.net/npm/vanillatree@1/dist/vanillatree.min.js"&gt;&lt;/script&gt;</code>. Everything else is in the <a href="https://github.com/finom/vanillatree#readme">README</a>.</p>
+      </section>
+    </main>
+
+    <footer class="wrap">MIT · <a href="https://github.com/finom">Andrey Gubanov</a></footer>
+
+    <script src="vanillatree.min.js"></script>
+    <script src="demo.js"></script>
+  </body>
+</html>

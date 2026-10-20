@@ -1,24 +1,85 @@
 {
   "name": "vanillatree",
   "version": "0.0.3",
-  "description": "Standalone tree view library",
-  "main": "vanillatree.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "A tree view with no dependencies: one small script, keyboard and screen reader support, IE 10 and up",
+  "keywords": [
+    "treeview",
+    "tree-view",
+    "tree",
+    "jstree",
+    "vanilla",
+    "vanilla-js",
+    "accessibility",
+    "no-dependencies",
+    "typescript"
+  ],
+  "homepage": "https://finom.github.io/vanillatree/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/finom/vanillatree.git"
   },
-  "keywords": [
-    "treeview",
-    "jstree",
-    "vanilla"
-  ],
-  "author": "Andrey Gubanov",
+  "author": "Andrey Gubanov <andrey.a.gubanov@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/finom/vanillatree/issues"
   },
-  "homepage": "https://github.com/finom/vanillatree#readme"
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/vanillatree.d.mts",
+        "default": "./dist/vanillatree.min.mjs"
+      },
+      "require": {
+        "types": "./dist/vanillatree.d.cts",
+        "default": "./dist/vanillatree.min.js"
+      }
+    },
+    "./vanillatree.css": "./dist/vanillatree.css",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/vanillatree.min.js",
+  "module": "./dist/vanillatree.min.mjs",
+  "types": "./dist/vanillatree.d.cts",
+  "style": "./dist/vanillatree.css",
+  "unpkg": "./dist/vanillatree.min.js",
+  "jsdelivr": "./dist/vanillatree.min.js",
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "lint": "biome check --error-on-warnings .",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "build": "node scripts/build.mjs",
+    "check:dist": "node scripts/check-dist.mjs && node scripts/check-legacy.mjs && node scripts/check-legacy-run.mjs && npm run test:dist",
+    "test:dist": "VANILLATREE_DIST=1 vitest run",
+    "build:demo": "node scripts/build-demo.mjs",
+    "patch": "node scripts/release.mjs patch",
+    "minor": "node scripts/release.mjs minor",
+    "major": "node scripts/release.mjs major",
+    "beta": "node scripts/release.mjs beta",
+    "beta-minor": "node scripts/release.mjs beta-minor",
+    "beta-major": "node scripts/release.mjs beta-major",
+    "prepublishOnly": "node scripts/ci-only.mjs"
+  },
+  "devDependencies": {
+    "@babel/core": "^8.0.7",
+    "@babel/preset-env": "^8.0.7",
+    "@biomejs/biome": "^2.5.15",
+    "@rollup/plugin-terser": "^1.0.0",
+    "@vitest/coverage-v8": "^5.0.4",
+    "acorn": "^8.19.0",
+    "acorn-walk": "^8.3.5",
+    "fast-check": "^4.10.2",
+    "jsdom": "^30.1.2",
+    "rollup": "^4.64.5",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.4"
+  }
 }
