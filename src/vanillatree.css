@@ -1,0 +1,199 @@
+/*! VanillaTree | MIT | https://github.com/finom/vanillatree
+ * The colors are CSS variables, each with a plain value before it for browsers without them (IE 10 and 11).
+ * The dark theme applies inside `.vtree-dark` (the `theme` option sets it on the tree, or put it on any ancestor). */
+
+.vtree ul.vtree-subtree,
+.vtree li.vtree-leaf {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  position: relative;
+}
+
+.vtree {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.vtree li.vtree-leaf {
+  background-position: -90px 0;
+  background-repeat: repeat-y;
+  min-height: 18px;
+  line-height: 18px;
+}
+
+.vtree li.vtree-leaf::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  background-position: -36px 0;
+}
+
+.vtree li.vtree-leaf li.vtree-leaf {
+  margin-left: 18px;
+}
+
+.vtree li.vtree-leaf:last-child {
+  background-image: none;
+}
+
+.vtree li.vtree-leaf.closed ul.vtree-subtree {
+  display: none;
+}
+
+.vtree li.vtree-leaf.vtree-has-children > span.vtree-toggle {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-position: -72px 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.vtree li.vtree-leaf.vtree-has-children.closed > span.vtree-toggle {
+  background-position: -54px 0;
+}
+
+.vtree a.vtree-leaf-label {
+  line-height: 18px;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+  max-width: 100%;
+  margin-left: 18px;
+  padding: 0 2px;
+}
+
+.vtree li.vtree-leaf a.vtree-leaf-label:hover {
+  background-color: #e7f4f9;
+  background-color: var(--vtree-hover-background, #e7f4f9);
+  outline: 1px solid #d8f0fa;
+  outline: 1px solid var(--vtree-hover-outline, #d8f0fa);
+}
+
+.vtree li.vtree-leaf.vtree-selected > a.vtree-leaf-label {
+  background-color: #beebff;
+  background-color: var(--vtree-selected-background, #beebff);
+  outline: 1px solid #99defd;
+  outline: 1px solid var(--vtree-selected-outline, #99defd);
+}
+
+/* keyboard focus: the ring goes on the label, not around the leaf and its children */
+.vtree li.vtree-leaf:focus {
+  outline: none;
+}
+
+.vtree li.vtree-leaf:focus > a.vtree-leaf-label {
+  outline: 2px solid #0b6bcb;
+  outline: 2px solid var(--vtree-focus, #0b6bcb);
+  outline-offset: 1px;
+}
+
+/* no ring after a click, where the browser can tell */
+.vtree li.vtree-leaf:focus:not(:focus-visible) > a.vtree-leaf-label {
+  outline: none;
+}
+
+.vtree li.vtree-leaf.vtree-selected:focus:not(:focus-visible) > a.vtree-leaf-label {
+  outline: 1px solid #99defd;
+  outline: 1px solid var(--vtree-selected-outline, #99defd);
+}
+
+.vtree-contextmenu {
+  position: absolute;
+  z-index: 9999999;
+  border: solid 1px #ccc;
+  border: solid 1px var(--vtree-menu-border, #ccc);
+  background: #eee;
+  background: var(--vtree-menu-background, #eee);
+  padding: 0;
+  margin: 0;
+  display: none;
+}
+
+.vtree-contextmenu li {
+  list-style: none;
+  padding: 1px 5px;
+  margin: 0;
+  color: #333;
+  color: var(--vtree-menu-color, #333);
+  line-height: 20px;
+  height: 20px;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.vtree-contextmenu li:hover,
+.vtree-contextmenu li:focus {
+  outline: none;
+  color: #fff;
+  color: var(--vtree-menu-active-color, #fff);
+  background-color: #3399ff;
+  background-color: var(--vtree-menu-active-background, #3399ff);
+}
+
+.vtree li.vtree-leaf,
+.vtree li.vtree-leaf::before,
+.vtree li.vtree-leaf.vtree-has-children > span.vtree-toggle {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAAASCAYAAAC+Tjt8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA30lEQVRYw+2YQQqDMBBFvUdxGe+U+3gFs3WTkJsJ5goKv1QodFHTiqNm8C8+2Y0+Zl7QqQBUjJ6oe+G6fuDOdTi1NIyG0TDmd8NCCDjigU3T4MqJfnNJm3EWVxYsxgjpZhljcOWEaufKgqWU0Pc9pKCstSjBMM1cWbBpmha4rusgASUBJmGYZq4s2DzPS4ZhQNu22AslOYlr5z8N+8a1tc4a19Y6hxjmnMOeu/11fqYUwzRyZcHGcRS760tJqVy7DfPei39NlRDtXKf/h5VgmOYNDrcH3CUyNIxhw7Qa9gQbuFdIMXobzAAAAABJRU5ErkJggg==);
+}
+
+/* the dark theme */
+
+.vtree-dark li.vtree-leaf,
+.vtree-dark li.vtree-leaf::before,
+.vtree-dark li.vtree-leaf.vtree-has-children > span.vtree-toggle {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAAASCAYAAAC+Tjt8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAzElEQVRYw+2YQQrDIBBFA8kVIngz0Y1bvYL38U5xGXqPKR0odJNC6ohi/wNxN/Bw/qAuCwAtOc8HoQ4ASBgSBr5hrW1y4sdxUM9OfHtJJ6O3F4sZY0j6sEop1LsRZ/RisX3fyXtPUlI5ZxohYTN6sdi2bSwXYyQJKQkxiUac0YvF1nXlpbWmlBLVSkl24tX+q9fdOlded+s0SVgIgWpm+2v/XKMkbCYvFlNKic36kW6/I3pVJ8w5J36bGoFZvZq9w+CFnw4AkDAA/jNhTwd6SF35vQQ/AAAAAElFTkSuQmCC);
+}
+
+.vtree-dark li.vtree-leaf:last-child {
+  background-image: none;
+}
+
+.vtree-dark li.vtree-leaf a.vtree-leaf-label:hover {
+  background-color: #1d3a47;
+  background-color: var(--vtree-hover-background, #1d3a47);
+  outline: 1px solid #2b5466;
+  outline: 1px solid var(--vtree-hover-outline, #2b5466);
+}
+
+.vtree-dark li.vtree-leaf.vtree-selected > a.vtree-leaf-label {
+  background-color: #0f4c69;
+  background-color: var(--vtree-selected-background, #0f4c69);
+  outline: 1px solid #1f6f94;
+  outline: 1px solid var(--vtree-selected-outline, #1f6f94);
+}
+
+.vtree-dark li.vtree-leaf:focus > a.vtree-leaf-label {
+  outline: 2px solid #6cb6ff;
+  outline: 2px solid var(--vtree-focus, #6cb6ff);
+}
+
+/* a separate rule: a browser without :focus-visible drops the whole selector list */
+.vtree-dark li.vtree-leaf.vtree-selected:focus:not(:focus-visible) > a.vtree-leaf-label {
+  outline: 1px solid #1f6f94;
+  outline: 1px solid var(--vtree-selected-outline, #1f6f94);
+}
+
+.vtree-dark .vtree-contextmenu {
+  border-color: #444;
+  border-color: var(--vtree-menu-border, #444);
+  background: #2a2a2a;
+  background: var(--vtree-menu-background, #2a2a2a);
+}
+
+.vtree-dark .vtree-contextmenu li {
+  color: #ddd;
+  color: var(--vtree-menu-color, #ddd);
+}
+
+.vtree-dark .vtree-contextmenu li:hover,
+.vtree-dark .vtree-contextmenu li:focus {
+  color: #fff;
+  color: var(--vtree-menu-active-color, #fff);
+  background-color: #1f6fbf;
+  background-color: var(--vtree-menu-active-background, #1f6fbf);
+}
