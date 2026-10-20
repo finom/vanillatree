@@ -1,6 +1,6 @@
 {
   "name": "vanillatree",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "A tree view with no dependencies: one small script, keyboard and screen reader support, IE 10 and up",
   "keywords": [
     "treeview",

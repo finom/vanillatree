@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-10-20
+
 The library is rewritten in TypeScript, with no dependencies. The script-tag bundle still runs in Internet Explorer 10 and 11.
 
 ### Breaking
@@ -34,4 +36,5 @@ The library is rewritten in TypeScript, with no dependencies. The script-tag bun
 - An id with a quote or a bracket in it works: leaves are found by id, not by a selector.
 - A tree inside another tree's label no longer has its clicks and keys handled by the outer tree.
 
-[Unreleased]: https://github.com/finom/vanillatree/commits/main
+[Unreleased]: https://github.com/finom/vanillatree/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/finom/vanillatree/releases/tag/v1.0.0
