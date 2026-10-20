@@ -3,6 +3,7 @@
 [![npm](https://img.shields.io/npm/v/vanillatree.svg)](https://www.npmjs.com/package/vanillatree)
 [![CI](https://github.com/finom/vanillatree/actions/workflows/ci.yml/badge.svg)](https://github.com/finom/vanillatree/actions/workflows/ci.yml)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/finom/vanillatree/badge)](https://scorecard.dev/viewer/?uri=github.com/finom/vanillatree)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/15742/badge)](https://www.bestpractices.dev/projects/15742)
 
 A tree view with no dependencies: one minified script (about 3.5 kB gzipped) and a stylesheet. Keyboard and screen reader support, a dark theme, TypeScript types. Runs in every current browser and in Internet Explorer 10 and 11.
 
