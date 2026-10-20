@@ -5,7 +5,7 @@
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/finom/vanillatree/badge)](https://scorecard.dev/viewer/?uri=github.com/finom/vanillatree)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/15742/badge)](https://www.bestpractices.dev/projects/15742)
 
-A tree view with no dependencies: one minified script (about 3.5 kB gzipped) and a stylesheet. Keyboard and screen reader support, a dark theme, TypeScript types. Runs in every current browser and in Internet Explorer 10 and 11.
+A tree view with no dependencies: one minified script (3.4 kB gzipped) and a stylesheet. Keyboard and screen reader support, a dark theme, TypeScript types. Runs in every current browser and in Internet Explorer 10 and 11.
 
 **[Live demo](https://finom.github.io/vanillatree/)**
 
